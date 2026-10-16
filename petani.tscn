@@ -2,11 +2,33 @@
 
 [ext_resource type="Script" uid="uid://h1kvnxxht6aj" path="res://petani.gd" id="1_script"]
 [ext_resource type="SpriteFrames" path="res://sprites/petani/petani_frames.tres" id="2_frames"]
+[ext_resource type="Texture2D" path="res://sprites/rumput_tile.png" id="3_rumput"]
+[ext_resource type="Texture2D" path="res://sprites/jalan_vertikal.png" id="4_jalan"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c6lqs"]
 size = Vector2(80, 40)
 
 [node name="Node2D" type="Node2D" unique_id=728851168]
+
+[node name="BackgroundRumput" type="TextureRect" parent="." unique_id=551239841]
+texture_filter = 1
+texture_repeat = 2
+offset_left = -3000.0
+offset_top = -3000.0
+offset_right = 5000.0
+offset_bottom = 5000.0
+texture = ExtResource("3_rumput")
+stretch_mode = 1
+
+[node name="JalanSetapak" type="TextureRect" parent="." unique_id=773829104]
+texture_filter = 1
+texture_repeat = 2
+offset_left = 320.0
+offset_top = -4000.0
+offset_right = 832.0
+offset_bottom = 5000.0
+texture = ExtResource("4_jalan")
+stretch_mode = 1
 
 [node name="petani" type="CharacterBody2D" parent="." unique_id=435168507]
 position = Vector2(576, 324)
@@ -20,3 +42,6 @@ animation = &"idle_down"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="petani" unique_id=874759247]
 position = Vector2(0, 95)
 shape = SubResource("RectangleShape2D_c6lqs")
+
+[node name="Camera2D" type="Camera2D" parent="petani" unique_id=987654321]
+position_smoothing_enabled = true

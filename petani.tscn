@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://c15g18d1gy5m0"]
+
+[ext_resource type="Script" uid="uid://h1kvnxxht6aj" path="res://petani.gd" id="1_script"]
+[ext_resource type="SpriteFrames" path="res://sprites/petani/petani_frames.tres" id="2_frames"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c6lqs"]
+size = Vector2(80, 40)
+
+[node name="Node2D" type="Node2D" unique_id=728851168]
+
+[node name="petani" type="CharacterBody2D" parent="." unique_id=435168507]
+position = Vector2(576, 324)
+script = ExtResource("1_script")
+speed = 250.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="petani" unique_id=223837563]
+sprite_frames = ExtResource("2_frames")
+animation = &"idle_down"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="petani" unique_id=874759247]
+position = Vector2(0, 95)
+shape = SubResource("RectangleShape2D_c6lqs")

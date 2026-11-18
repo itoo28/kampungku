@@ -1,0 +1,12 @@
+[gd_resource type="TileSet" format=3 uid="uid://b8m3y1e0adg2c"]
+
+[ext_resource type="Texture2D" uid="uid://f032fqjpb1cv" path="res://sprites/tanah_cangkul.png" id="1_tanah"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_soil"]
+texture = ExtResource("1_tanah")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+
+[resource]
+tile_size = Vector2i(128, 128)
+sources/0 = SubResource("TileSetAtlasSource_soil")

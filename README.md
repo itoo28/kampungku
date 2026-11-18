@@ -13,10 +13,11 @@
 - **Animasi Karakter 4 Arah**:
   - Berjalan: `walk_down` (depan), `walk_up` (belakang), `walk_left` (kiri), dan `walk_right` (kanan).
   - Diam (*Idle*): Karakter tetap menghadap ke arah terakhir saat input berhenti (`idle_down`, `idle_up`, dll.).
-- **Lingkungan Prototype**:
-  - Hamparan padang rumput hijau yang berulang secara mulus (*seamless tile*).
-  - Jalan setapak vertikal tanah liat berbatu dengan style pixel art yang selaras dengan karakter petani.
-  - Kamera pelacak (*Camera2D*) yang mengikuti karakter dengan efek perpindahan halus (*position smoothing*).
+- **Lingkungan Kampung Indonesia (16-bit Pixel Art)**:
+  - Hamparan padang rumput hijau cerah (*seamless tile*) dengan jalan setapak batu kampung (vertikal, horizontal, simpang empat) serta tebing tanah bertangga batu menuju lembah sawah.
+  - Bangunan khas desa Indonesia lengkap dengan kolisi & *Y-sorting*: **Indomaret**, **Warung Bu Siti**, **Pos Ronda** (lengkap dengan kentongan & lentera), **Rumah Warga Desa** berpagar kayu, dan **Saung Sawah**.
+  - Area persawahan dengan petak sawah berair, tanaman padi, pohon kelapa, pohon rindang, lampu jalan kayu, bangku kampung, dan lahan garapan interaktif (`TileMapLayer` `Ladang`) yang bisa dicangkul.
+  - Kamera pelacak (*Camera2D*) dengan *pixel-snapping* dan filter tekstur *Nearest* agar sprite tetap tajam saat karakter bergerak.
 
 ---
 
@@ -36,18 +37,30 @@
 ```text
 kampungku/
 ├── sprites/
+│   ├── bangunan/                 # Bangunan kampung (indomaret, warung, pos_ronda, saung_sawah, rumah_desa)
+│   ├── lingkungan/               # Jalan batu, simpang, tebing & tangga batu, sawah berair, padi
+│   ├── properti/                 # Lampu jalan, bangku kayu, pagar, pohon rindang, pohon kelapa, gentong, semak
 │   ├── petani/
 │   │   ├── walk_down_*.png       # Frame animasi hadap depan (0-3)
 │   │   ├── walk_up_*.png         # Frame animasi hadap belakang (0-3)
 │   │   ├── walk_left_*.png       # Frame animasi hadap kiri (0-3)
 │   │   ├── walk_right_*.png      # Frame animasi hadap kanan (0-3)
-│   │   ├── petani_frames.tres    # Resource SpriteFrames Godot
-│   │   └── petani_sheet_clean.png# Spritesheet grid 4x4 bersih
-│   ├── jalan_vertikal.png        # Tekstur jalan setapak vertikal
-│   └── rumput_tile.png           # Tekstur tile rumput seamless
-├── petani.tscn                   # Scene utama berisi karakter, background, dan kamera
-├── petani.gd                     # Script logika pergerakan & animasi karakter
-├── project.godot                 # File konfigurasi utama Godot Engine
+│   │   ├── petani_frames.tres    # Resource SpriteFrames Godot (8 FPS walk)
+│   │   └── petani_sheet_clean.png# Spritesheet grid 4x4 pixel-locked (512x640)
+│   ├── jalan_vertikal.png        # Tekstur jalan setapak batu vertikal
+│   ├── rumput_tile.png           # Tekstur tile rumput seamless
+│   ├── tanah_cangkul.png         # Tile tanah garapan ladang (128x128)
+│   ├── ladang_tileset.tres       # TileSet Godot untuk TileMapLayer Ladang
+│   ├── selector.png              # Selektor petak 128x128
+│   ├── cangkul.png               # Sprite alat cangkul
+│   └── btn_cangkul.png           # Tombol aksi cangkul mobile
+├── tools/
+│   └── generate_kampung_assets.js# Generator aset pixel art deterministik (skala integer 4x4)
+├── petani.tscn                   # Scene utama sepetak kampung Indonesia (Ground, Ladang, DuniaKampung Y-Sort)
+├── petani.gd                     # Script pergerakan, interaksi cangkul & animasi karakter
+├── ladang.gd                     # Script TileMapLayer pengelola status petak ladang
+├── mobile_controls.tscn/.gd      # Antarmuka tombol aksi sentuh untuk mobile
+├── project.godot                 # Konfigurasi utama Godot Engine (Nearest filter & pixel snap)
 ├── AGENTS.md                     # Pedoman arsitektur dan aturan pengembangan proyek
 └── README.md                     # Dokumentasi proyek
 ```
@@ -71,8 +84,9 @@ kampungku/
 
 ## 🗺️ Rencana Pengembangan Selanjutnya (Roadmap)
 
-- [ ] Implementasi sistem grid tanah menggunakan `TileMapLayer`.
-- [ ] Sistem interaksi alat pertanian (mencangkul tanah, menyiram air, menabur benih).
+- [x] Implementasi sistem grid tanah menggunakan `TileMapLayer` dan selektor petak 64x64.
+- [x] Sistem interaksi alat mencangkul tanah (*tilling*), mendukung tombol Spasi dan tombol aksi sentuh mobile.
+- [ ] Sistem menyiram air (*watering can*) dan menabur benih tanaman.
 - [ ] Siklus pertumbuhan tanaman lokal (padi, jagung, cabai).
 - [ ] Tampilan antarmuka (*UI/HUD*) untuk tas inventaris (*inventory*) dan joystick virtual layar sentuh.
 - [ ] Siklus waktu (pagi, siang, sore, malam) dan cuaca tropis (hujan/panas).

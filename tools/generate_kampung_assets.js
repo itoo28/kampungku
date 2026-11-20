@@ -376,26 +376,28 @@ function generateGroundTiles() {
     c.savePNG('sprites/rumput_tile.png');
   }
 
-  // 1B. Interactive Tilled Soil Tile (tanah_cangkul.png) - 128x128
+  // 1B. Interactive Tilled Soil Tile (tanah_cangkul.png) - 16x16 logical -> 64x64 px (realistic scale)
   {
-    const c = new PixelCanvas(32, 32);
-    c.rect(0, 0, 32, 32, PAL.DIRT_DARK);
-    c.rect(1, 1, 30, 30, PAL.SOIL_MID);
-    for (let row = 0; row < 4; row++) {
-      const y0 = 2 + row * 7;
-      c.rect(2, y0, 28, 1, PAL.SOIL_TOP);
-      c.rect(2, y0 + 1, 28, 3, PAL.SOIL_LIGHT);
-      c.rect(2, y0 + 4, 28, 1, PAL.SOIL_MID);
-      c.rect(2, y0 + 5, 28, 2, PAL.SOIL_DARK);
-      for (let x = 3; x < 29; x += 3) {
-        if (hash2(x, row, 77) > 0.4) c.px(x, y0 + 2, PAL.SOIL_TOP);
-        if (hash2(x, row, 91) > 0.55) c.px(x + 1, y0 + 3, PAL.SOIL_MID);
+    const c = new PixelCanvas(16, 16);
+    c.rect(1, 1, 14, 14, PAL.SOIL_MID);
+    // 3 crisp horizontal agricultural furrows
+    for (let row = 0; row < 3; row++) {
+      const y0 = 2 + row * 4;
+      c.rect(2, y0, 12, 1, PAL.SOIL_TOP);
+      c.rect(2, y0 + 1, 12, 2, PAL.SOIL_LIGHT);
+      c.rect(2, y0 + 3, 12, 1, PAL.SOIL_DARK);
+      for (let x = 3; x < 13; x += 3) {
+        if (hash2(x, row, 77) > 0.45) c.px(x, y0 + 1, PAL.SOIL_TOP);
+        if (hash2(x, row, 91) > 0.55) c.px(x + 1, y0 + 2, PAL.SOIL_MID);
       }
     }
-    c.rectOutline(0, 0, 32, 32, PAL.SOIL_DARK);
-    // Corner bevels
-    c.px(0, 0, PAL.GRASS_DARK); c.px(31, 0, PAL.GRASS_DARK);
-    c.px(0, 31, PAL.GRASS_DARK); c.px(31, 31, PAL.GRASS_DARK);
+    // Soft rounded dark-soil border (transparent outer corners so individual plots blend nicely)
+    c.rect(1, 0, 14, 1, PAL.SOIL_DARK);
+    c.rect(1, 15, 14, 1, PAL.SOIL_DARK);
+    c.rect(0, 1, 1, 14, PAL.SOIL_DARK);
+    c.rect(15, 1, 1, 14, PAL.SOIL_DARK);
+    c.px(1, 1, PAL.SOIL_DARK); c.px(14, 1, PAL.SOIL_DARK);
+    c.px(1, 14, PAL.SOIL_DARK); c.px(14, 14, PAL.SOIL_DARK);
     c.savePNG('sprites/tanah_cangkul.png');
   }
 
@@ -612,26 +614,57 @@ function generateGroundTiles() {
     c.savePNG('sprites/lingkungan/padi_tumbuh.png');
   }
 
-  // 1J. Crisp Pixel Tile Selector (sprites/selector.png) - 128x128
+  // 1J. Crisp Pixel Tile Selector (sprites/selector.png) - 16x16 logical -> 64x64 px
   {
-    const c = new PixelCanvas(32, 32);
-    const arm = 7;
+    const c = new PixelCanvas(16, 16);
+    const arm = 5;
     const drawCorner = (cx, cy, dx, dy) => {
       for (let i = 0; i < arm; i++) {
         c.px(cx + dx * i, cy, PAL.OUTLINE);
         c.px(cx + dx * i, cy + dy, PAL.INDO_YELLOW);
-        c.px(cx + dx * i, cy + dy * 2, PAL.OUTLINE);
         c.px(cx, cy + dy * i, PAL.OUTLINE);
         c.px(cx + dx, cy + dy * i, PAL.INDO_YELLOW);
-        c.px(cx + dx * 2, cy + dy * i, PAL.OUTLINE);
       }
+      c.px(cx + dx * 2, cy + dy * 2, PAL.OUTLINE);
       c.px(cx + dx, cy + dy, PAL.WHITE);
     };
     drawCorner(0, 0, 1, 1);
-    drawCorner(31, 0, -1, 1);
-    drawCorner(0, 31, 1, -1);
-    drawCorner(31, 31, -1, -1);
+    drawCorner(15, 0, -1, 1);
+    drawCorner(0, 15, 1, -1);
+    drawCorner(15, 15, -1, -1);
     c.savePNG('sprites/selector.png');
+  }
+
+  // 1J-2. Designated Farmable Plot Backdrop (sprites/lingkungan/area_ladang.png)
+  // 104x72 logical -> 416x288 px (frames a 96x64 logical = 384x256 px = 6x4 grid of 64x64 tiles!)
+  {
+    const c = new PixelCanvas(104, 72);
+    // Outer grassy rim blending with meadow
+    c.rectOutline(0, 0, 104, 72, PAL.GRASS_DARK, PAL.DIRT_MID);
+    c.rectOutline(1, 1, 102, 70, PAL.DIRT_LIGHT);
+    c.rectOutline(2, 2, 100, 68, PAL.DIRT_DARK);
+    // Soft cleared loam interior (lighter warm dry earth so player sees farmable area clearly)
+    c.rect(3, 3, 98, 66, '#b57b4a');
+    c.rectOutline(3, 3, 98, 66, '#9c6236');
+    // Subtle pixel pebble/earth speckles + faint 16x16 grid markers inside farmable 4..100, 4..68
+    for (let y = 4; y < 68; y++) {
+      for (let x = 4; x < 100; x++) {
+        const n = hash2(x, y, 512);
+        if (n > 0.91) c.px(x, y, '#c98e59');
+        else if (n < 0.08) c.px(x, y, '#9c6236');
+        // Tiny grass specks near inner border
+        if ((x === 4 || x === 99 || y === 4 || y === 67) && n > 0.72) {
+          c.px(x, y, PAL.GRASS_DARK);
+        }
+      }
+    }
+    // 4 short bamboo corner stakes marking the farmable boundary
+    const stakes = [[1, 1], [100, 1], [1, 68], [100, 68]];
+    for (const [sx, sy] of stakes) {
+      c.rectOutline(sx, sy, 3, 3, PAL.OUTLINE, PAL.BAMBOO_HIGH);
+      c.px(sx + 1, sy + 2, PAL.BAMBOO_DARK);
+    }
+    c.savePNG('sprites/lingkungan/area_ladang.png');
   }
 
   // 1K. Crisp Pixel Hoe Tool (sprites/cangkul.png) - 64x64
@@ -858,6 +891,140 @@ function generatePetaniSprites() {
     }
   });
   sheet.savePNG('sprites/petani/petani_sheet_clean.png');
+
+  // --- Dedicated Pixel-Locked Hoe Action Frames (2 frames per direction: windup & strike) ---
+  function renderHoeFrame(dir, phase) {
+    // phase 0 = windup (arms raised high), phase 1 = strike (lunge forward & down)
+    const c = new PixelCanvas(FW, FH);
+    const by = phase === 0 ? -1 : 1; // rise on windup, dip on strike
+
+    const drawCapingAt = (target, yOff, xOff = 0) => {
+      const y0 = 2 + yOff;
+      const widths = [2, 4, 8, 12, 16, 20, 22, 24, 22];
+      for (let ry = 0; ry < widths.length; ry++) {
+        const w = widths[ry];
+        const xStart = Math.floor(16 - w / 2) + xOff;
+        for (let dx = 0; dx < w; dx++) {
+          let col = HAT_BASE;
+          if (ry <= 1) col = HAT_HIGH;
+          else if (ry === widths.length - 1) col = HAT_DEEP;
+          else if ((dx + ry) % 4 === 0) col = HAT_HIGH;
+          else if (dx > w * 0.68) col = HAT_SHAD;
+          target.px(xStart + dx, y0 + ry, col);
+        }
+      }
+      target.rect(7 + xOff, y0 + 8, 18, 2, HAT_DEEP);
+    };
+
+    if (dir === 'down' || dir === 'up') {
+      const isUp = dir === 'up';
+      // Wide braced legs
+      c.rect(10, 27 + by, 4, 6 - by, PANTS_BASE);
+      c.rect(10, 27 + by, 1, 6 - by, PANTS_DARK);
+      c.rect(10, 33, 4, 3, SKIN_BASE);
+      c.rect(10, 35, 4, 1, '#7a4a28');
+
+      c.rect(18, 27 + by, 4, 6 - by, PANTS_BASE);
+      c.rect(21, 27 + by, 1, 6 - by, PANTS_DARK);
+      c.rect(18, 33, 4, 3, SKIN_BASE);
+      c.rect(18, 35, 4, 1, '#7a4a28');
+
+      // Torso
+      c.rect(11, 18 + by, 10, 7, SHIRT_BASE);
+      c.rect(12, 18 + by, 8, 5, SHIRT_HIGH);
+      c.rect(11, 24 + by, 10, 3, SARUNG_BASE);
+      c.rect(12, 24 + by, 8, 1, SARUNG_LIGHT);
+      c.rect(18, 25 + by, 2, 4, SARUNG_DARK);
+
+      // Arms: raised overhead on windup (phase 0), thrust down/center on strike (phase 1)
+      if (phase === 0) {
+        // Raised arms beside caping
+        c.rect(7, 13 + by, 3, 5, SHIRT_BASE);
+        c.rect(7, 10 + by, 3, 3, SKIN_BASE);
+        c.rect(22, 13 + by, 3, 5, SHIRT_BASE);
+        c.rect(22, 10 + by, 3, 3, SKIN_BASE);
+      } else {
+        // Thrust arms down together toward center
+        c.rect(9, 20 + by, 3, 4, SHIRT_BASE);
+        c.rect(12, 23 + by, 3, 3, SKIN_BASE);
+        c.rect(20, 20 + by, 3, 4, SHIRT_BASE);
+        c.rect(17, 23 + by, 3, 3, SKIN_BASE);
+      }
+
+      // Head
+      c.rect(10, 11 + by, 12, 7, isUp ? HAIR_DARK : SKIN_BASE);
+      if (!isUp) {
+        c.rect(11, 12 + by, 10, 5, SKIN_LIGHT);
+        c.rect(11, 17 + by, 10, 1, SKIN_SHAD);
+        c.rect(10, 11 + by, 12, 2, HAIR_DARK);
+        c.rect(10, 13 + by, 1, 3, HAIR_DARK);
+        c.rect(21, 13 + by, 1, 3, HAIR_DARK);
+        // Focused eyes
+        c.rect(12, 14 + by, 2, 2, '#1c141d');
+        c.px(13, 14 + by, '#ffffff');
+        c.rect(18, 14 + by, 2, 2, '#1c141d');
+        c.px(18, 14 + by, '#ffffff');
+        // Determined mouth
+        c.rect(15, 16 + by, 2, 1, SKIN_SHAD);
+      } else {
+        c.rect(11, 12 + by, 10, 4, HAIR_MID);
+        c.rect(10, 16 + by, 12, 2, HAIR_DARK);
+      }
+
+      drawCapingAt(c, by, 0);
+      c.outline(PAL.OUTLINE);
+      return c.withGroundShadow(16, 36, 7, 2, PAL.SHADOW);
+    } else {
+      const flip = (dir === 'left');
+      const sc = new PixelCanvas(FW, FH);
+      const leanX = phase === 0 ? -1 : 2;
+
+      // Wide braced stance
+      sc.rect(11, 27 + by, 4, 6 - by, PANTS_DARK);
+      sc.rect(11, 33, 4, 2, SKIN_SHAD);
+      sc.rect(11, 34, 5, 1, '#7a4a28');
+
+      sc.rect(17 + (phase === 1 ? 1 : 0), 27 + by, 4, 6 - by, PANTS_BASE);
+      sc.rect(17 + (phase === 1 ? 1 : 0), 33, 4, 2, SKIN_BASE);
+      sc.rect(17 + (phase === 1 ? 1 : 0), 34, 5, 1, '#7a4a28');
+
+      // Torso leaning back on windup, forward on strike
+      sc.rect(11 + leanX, 18 + by, 10, 7, SHIRT_BASE);
+      sc.rect(12 + leanX, 18 + by, 8, 5, SHIRT_HIGH);
+      sc.rect(11 + leanX, 24 + by, 10, 3, SARUNG_BASE);
+      sc.rect(12 + leanX, 24 + by, 8, 1, SARUNG_LIGHT);
+      sc.rect(12 + leanX, 25 + by, 2, 4, SARUNG_DARK);
+
+      // Head
+      sc.rect(11 + leanX, 11 + by, 10, 7, SKIN_BASE);
+      sc.rect(14 + leanX, 12 + by, 7, 5, SKIN_LIGHT);
+      sc.rect(10 + leanX, 11 + by, 6, 7, HAIR_DARK);
+      sc.rect(11 + leanX, 11 + by, 9, 2, HAIR_DARK);
+      sc.rect(18 + leanX, 14 + by, 2, 2, '#1c141d');
+      sc.px(19 + leanX, 14 + by, '#ffffff');
+
+      // Action arm
+      if (phase === 0) {
+        // Raised behind/above shoulder
+        sc.rect(9 + leanX, 13 + by, 3, 5, SHIRT_HIGH);
+        sc.rect(9 + leanX, 10 + by, 3, 3, SKIN_BASE);
+      } else {
+        // Extended forward & down
+        sc.rect(18 + leanX, 19 + by, 5, 3, SHIRT_HIGH);
+        sc.rect(22 + leanX, 21 + by, 3, 3, SKIN_BASE);
+      }
+
+      drawCapingAt(sc, by, leanX);
+      sc.outline(PAL.OUTLINE);
+      c.blit(sc, 0, 0, flip);
+      return c.withGroundShadow(16, 36, 7, 2, PAL.SHADOW);
+    }
+  }
+
+  for (const dir of dirs) {
+    renderHoeFrame(dir, 0).savePNG(`sprites/petani/hoe_${dir}_0.png`);
+    renderHoeFrame(dir, 1).savePNG(`sprites/petani/hoe_${dir}_1.png`);
+  }
 }
 
 // ============================================================================
@@ -1119,6 +1286,325 @@ function generateBuildings() {
 
     c.savePNG('sprites/bangunan/rumah_desa.png');
   }
+
+  // 3F. ALFAMART DESA (80x64 logical -> 320x256 px)
+  {
+    const c = new PixelCanvas(80, 64);
+
+    // Traced Slate-Blue Shingled Roof behind modern Alfamart fascia
+    const roof = createShingledRoof(74, 18, PAL.SLATE_HIGH, PAL.SLATE_BASE, PAL.SLATE_DARK, PAL.SLATE_DARK);
+    c.blit(roof, 3, 1);
+
+    // Iconic Alfamart Canopy: Bold Red top, Yellow accent band, Blue bottom stripe
+    c.rectOutline(3, 16, 74, 15, PAL.OUTLINE, PAL.INDO_RED);
+    c.rect(4, 17, 72, 9, PAL.INDO_RED);
+    c.rect(4, 26, 72, 2, PAL.INDO_YELLOW);
+    c.rect(4, 28, 72, 2, PAL.INDO_BLUE);
+    // Crisp White Signboard Plaque with Red/Blue "ALFAMART" text
+    c.rect(14, 18, 52, 9, PAL.OUTLINE);
+    c.rect(15, 19, 50, 7, PAL.WHITE);
+    c.rect(15, 25, 50, 1, PAL.INDO_YELLOW);
+    // "ALFAMART" = 8 chars * 4 = 32px -> centered at x = 24
+    drawText(c, 'ALFAMART', 24, 20, PAL.INDO_RED);
+
+    // Clean Cream/White Tiled Storefront Wall + Stone Plinth
+    c.rectOutline(5, 30, 70, 29, PAL.OUTLINE, PAL.WHITE);
+    c.rect(6, 31, 68, 2, '#d2d8e2');
+    c.rect(6, 53, 68, 5, PAL.WALL_BASE_LIGHT);
+    c.rect(6, 56, 68, 2, PAL.WALL_BASE_DARK);
+
+    // Left Storefront Glass Window (Snacks & Red/Yellow Shelf Displays)
+    c.rectOutline(9, 34, 22, 17, PAL.OUTLINE, PAL.GLASS_DARK);
+    c.rect(10, 35, 20, 15, PAL.GLASS_MID);
+    c.rect(11, 38, 18, 2, PAL.CREAM_HIGH);
+    c.rect(12, 37, 4, 1, PAL.INDO_YELLOW);
+    c.rect(17, 37, 4, 1, PAL.INDO_RED);
+    c.rect(23, 37, 4, 1, PAL.INDO_BLUE);
+    c.rect(11, 44, 18, 2, PAL.CREAM_HIGH);
+    c.rect(12, 43, 3, 1, PAL.GRASS_LIGHT);
+    c.rect(17, 43, 5, 1, PAL.INDO_RED);
+    c.rect(23, 43, 4, 1, PAL.WHITE);
+    c.px(11, 36, PAL.GLASS_HIGH); c.px(12, 36, PAL.GLASS_HIGH);
+
+    // Right Storefront Glass Window (Drink Fridge + Promo Poster)
+    c.rectOutline(49, 34, 22, 17, PAL.OUTLINE, PAL.GLASS_DARK);
+    c.rect(50, 35, 20, 15, PAL.GLASS_MID);
+    c.rect(51, 37, 9, 11, PAL.WHITE); // beverage chiller
+    c.rect(52, 38, 7, 2, PAL.WATER_LIGHT);
+    c.rect(52, 41, 7, 2, PAL.INDO_RED);
+    c.rect(52, 44, 7, 2, PAL.GRASS_LIGHT);
+    c.rect(62, 38, 7, 9, PAL.INDO_YELLOW); // red-yellow promo poster
+    c.rect(63, 39, 5, 3, PAL.INDO_RED);
+    c.px(51, 36, PAL.GLASS_HIGH); c.px(52, 36, PAL.GLASS_HIGH);
+
+    // Center Red-Framed Automatic Sliding Glass Doors + Blue Welcome Mat
+    c.rectOutline(33, 33, 14, 25, PAL.OUTLINE, PAL.INDO_RED);
+    c.rect(35, 35, 4, 21, PAL.GLASS_MID);
+    c.rect(41, 35, 4, 21, PAL.GLASS_MID);
+    c.rect(39, 35, 2, 21, PAL.INDO_RED_DARK);
+    c.px(36, 36, PAL.GLASS_HIGH); c.px(42, 36, PAL.GLASS_HIGH);
+    c.rectOutline(31, 58, 18, 5, PAL.OUTLINE, PAL.STONE_LIGHT);
+    c.rect(34, 59, 12, 3, PAL.INDO_BLUE);
+
+    // Roadside Alfamart Pole Sign on Front Right
+    c.rect(72, 45, 3, 17, PAL.OUTLINE);
+    c.rect(73, 46, 1, 15, PAL.STONE_LIGHT);
+    c.rectOutline(68, 36, 11, 10, PAL.OUTLINE, PAL.INDO_RED);
+    c.rect(69, 37, 9, 5, PAL.INDO_RED);
+    c.rect(69, 42, 9, 1, PAL.INDO_YELLOW);
+    c.rect(69, 43, 9, 2, PAL.INDO_BLUE);
+
+    c.savePNG('sprites/bangunan/alfamart.png');
+  }
+
+  // 3G. WARUNG KOPI / WARKOP (72x64 logical -> 288x256 px)
+  {
+    const c = new PixelCanvas(72, 64);
+
+    // Dark Wooden Plank Walls
+    c.rectOutline(6, 22, 60, 34, PAL.OUTLINE, PAL.WOOD_BASE);
+    for (let y = 26; y < 55; y += 4) c.rect(8, y, 56, 1, PAL.WOOD_DARK);
+    c.rect(6, 22, 3, 34, PAL.WOOD_DEEP);
+    c.rect(63, 22, 3, 34, PAL.WOOD_DEEP);
+    c.rect(46, 22, 3, 34, PAL.WOOD_DEEP);
+
+    // Slate-Gray Shingled Roof
+    const roof = createShingledRoof(68, 24, PAL.SLATE_HIGH, PAL.SLATE_BASE, PAL.SLATE_DARK, PAL.SLATE_DARK);
+    c.blit(roof, 2, 1);
+
+    // "WARKOP" Signboard (Warm Blue & Yellow)
+    c.rectOutline(12, 20, 32, 9, PAL.OUTLINE, PAL.INDO_BLUE_DARK);
+    c.rect(13, 21, 30, 7, PAL.INDO_BLUE);
+    drawText(c, 'WARKOP', 16, 22, PAL.INDO_YELLOW);
+
+    // Open Coffee Counter with Blue-White Striped Tarpaulin Awning & Hanging Coffee Sachets (Rentengan!)
+    c.rectOutline(10, 31, 34, 14, PAL.OUTLINE, PAL.INTERIOR_DARK);
+    for (let x = 9; x < 45; x++) {
+      const col = (Math.floor(x / 3) % 2 === 0) ? '#2f78d6' : PAL.WHITE;
+      c.rect(x, 30, 1, 4, col);
+      c.px(x, 34, PAL.OUTLINE);
+    }
+    // Colorful Hanging Coffee & Drink Sachets (Rentengan Kopi!)
+    const sachetColors = [PAL.INDO_RED, PAL.INDO_YELLOW, PAL.WOOD_HIGH, PAL.GRASS_LIGHT, PAL.INDO_RED, PAL.WHITE];
+    for (let i = 0; i < 6; i++) {
+      const sx = 12 + i * 5;
+      c.rect(sx, 35, 3, 4, sachetColors[i]);
+      c.px(sx + 1, 36, PAL.WHITE);
+    }
+    // Countertop + Steaming Silver Thermos & Coffee Mugs
+    c.rectOutline(9, 43, 36, 4, PAL.OUTLINE, PAL.WOOD_HIGH);
+    c.rect(14, 39, 4, 4, PAL.STONE_LIGHT); c.rect(14, 38, 4, 1, PAL.INDO_RED); // termos air panas
+    c.px(15, 36, PAL.WHITE); c.px(16, 35, PAL.WHITE); // uap panas
+    c.rect(24, 41, 3, 2, PAL.WHITE); // gelas kopi 1
+    c.rect(31, 41, 3, 2, PAL.INDO_YELLOW); // gelas kopi 2
+    c.rect(37, 40, 4, 3, PAL.CREAM_HIGH); // toples gorengan
+
+    // Right Entrance Door
+    c.rectOutline(50, 33, 11, 22, PAL.OUTLINE, PAL.WOOD_DARK);
+    c.rect(52, 35, 7, 18, PAL.BAMBOO_BASE);
+    c.px(57, 44, PAL.OUTLINE);
+
+    // Two Cozy Blue/Wood Stools & Long Warkop Bench Out Front
+    c.rectOutline(11, 54, 30, 7, PAL.OUTLINE, PAL.WOOD_HIGH);
+    c.rect(12, 55, 28, 2, PAL.BAMBOO_HIGH);
+    c.rect(13, 59, 3, 4, PAL.WOOD_DARK);
+    c.rect(36, 59, 3, 4, PAL.WOOD_DARK);
+
+    c.savePNG('sprites/bangunan/warung_kopi.png');
+  }
+
+  // 3H. WARUNG BAKSO / MIE AYAM (76x64 logical -> 304x256 px)
+  {
+    const c = new PixelCanvas(76, 64);
+
+    // Warm Cream Plaster Walls with Red Trim
+    c.rectOutline(6, 22, 64, 34, PAL.OUTLINE, PAL.CREAM_HIGH);
+    c.rect(7, 48, 62, 7, PAL.TERR_MID);
+    c.rect(6, 22, 3, 34, PAL.WOOD_DARK);
+    c.rect(67, 22, 3, 34, PAL.WOOD_DARK);
+
+    // Traced Terracotta Genteng Roof
+    const roof = createShingledRoof(72, 23, PAL.TERR_HIGH, PAL.TERR_BASE, PAL.TERR_DARK, PAL.TERR_MID);
+    c.blit(roof, 2, 1);
+
+    // Classic Bright Yellow & Red Indonesian Warung Banner "BAKSO"
+    c.rectOutline(15, 19, 34, 10, PAL.OUTLINE, PAL.INDO_YELLOW);
+    c.rect(16, 20, 32, 8, PAL.INDO_YELLOW);
+    drawText(c, 'BAKSO', 22, 22, PAL.INDO_RED);
+
+    // Striped Red-Yellow Awning
+    for (let x = 9; x < 67; x++) {
+      const col = (Math.floor(x / 4) % 2 === 0) ? PAL.INDO_RED : PAL.INDO_YELLOW;
+      c.rect(x, 29, 1, 4, col);
+      c.px(x, 33, PAL.OUTLINE);
+    }
+
+    // Iconic Glass Gerobak Bakso (Meatball Cart) on Front Left!
+    c.rectOutline(10, 35, 28, 22, PAL.OUTLINE, PAL.WOOD_BASE);
+    c.rect(11, 36, 26, 2, PAL.WOOD_HIGH);
+    // Glass display case showing bowls, meatballs, noodles
+    c.rectOutline(12, 38, 15, 10, PAL.OUTLINE, PAL.GLASS_HIGH);
+    c.rect(13, 39, 13, 8, PAL.GLASS_MID);
+    c.rect(14, 44, 5, 2, PAL.WHITE); // mangkok ayam jago
+    c.rect(20, 44, 4, 2, PAL.INDO_YELLOW); // mie kuning
+    c.px(15, 42, PAL.INDO_RED); c.px(17, 42, PAL.GRASS_LIGHT); // saus & kecap
+    // Stainless steel soup pot + rising steam!
+    c.rectOutline(28, 41, 8, 7, PAL.OUTLINE, PAL.STONE_LIGHT);
+    c.rect(29, 42, 6, 2, PAL.WHITE);
+    c.px(31, 38, PAL.WHITE); c.px(33, 36, PAL.WHITE); c.px(30, 35, PAL.WHITE);
+    // Gerobak lower blue-painted wooden panel
+    c.rect(12, 49, 24, 6, PAL.INDO_BLUE);
+    c.rect(13, 50, 22, 2, '#3a82e0');
+
+    // Open Dining Entrance on Right + Table & Bowls
+    c.rectOutline(42, 34, 22, 21, PAL.OUTLINE, PAL.INTERIOR_DARK);
+    c.rectOutline(44, 45, 18, 6, PAL.OUTLINE, PAL.WOOD_HIGH);
+    c.rect(47, 43, 4, 2, PAL.WHITE);
+    c.rect(55, 43, 4, 2, PAL.WHITE);
+    // Dining bench in front
+    c.rectOutline(43, 54, 20, 7, PAL.OUTLINE, PAL.WOOD_BASE);
+    c.rect(44, 55, 18, 2, PAL.WOOD_HIGH);
+    c.rect(45, 59, 3, 4, PAL.WOOD_DARK);
+    c.rect(58, 59, 3, 4, PAL.WOOD_DARK);
+
+    c.savePNG('sprites/bangunan/warung_bakso.png');
+  }
+
+  // 3I. RUMAH ATAP BIRU (72x68 logical -> 288x272 px)
+  // Matches the bright blue shingled roof house from the reference image!
+  {
+    const c = new PixelCanvas(72, 68);
+
+    // Cream/Ivory Walls with Timber Corner Trim & Stone Base
+    c.rectOutline(7, 29, 58, 34, PAL.OUTLINE, PAL.CREAM_HIGH);
+    c.rect(8, 30, 56, 3, PAL.CREAM_SHAD);
+    c.rect(7, 29, 3, 34, PAL.WOOD_BASE);
+    c.rect(62, 29, 3, 34, PAL.WOOD_BASE);
+    c.rect(8, 57, 56, 5, PAL.WALL_BASE_LIGHT);
+    c.rect(8, 60, 56, 2, PAL.WALL_BASE_DARK);
+
+    // Centered Carved Teakwood Door + Porch Step
+    c.rectOutline(29, 40, 14, 22, PAL.OUTLINE, PAL.WOOD_DEEP);
+    c.rect(31, 42, 10, 19, PAL.WOOD_BASE);
+    c.rect(32, 43, 8, 7, PAL.WOOD_HIGH);
+    c.rect(32, 52, 8, 7, PAL.WOOD_DARK);
+    c.px(39, 51, PAL.INDO_YELLOW);
+    c.rectOutline(27, 62, 18, 4, PAL.OUTLINE, PAL.STONE_LIGHT);
+
+    // Symmetrical Windows with Flower Planter Boxes
+    for (const wx of [13, 49]) {
+      c.rectOutline(wx, 38, 11, 11, PAL.OUTLINE, PAL.WOOD_DARK);
+      c.rect(wx + 1, 39, 9, 9, PAL.GLASS_DARK);
+      c.rect(wx + 2, 40, 3, 3, PAL.GLASS_MID);
+      c.rect(wx + 6, 40, 3, 3, PAL.GLASS_MID);
+      c.rect(wx + 2, 44, 3, 3, PAL.GLASS_MID);
+      c.rect(wx + 6, 44, 3, 3, PAL.GLASS_MID);
+      // Flower box under window
+      c.rectOutline(wx - 1, 49, 13, 4, PAL.OUTLINE, PAL.TERR_MID);
+      c.px(wx + 1, 48, PAL.GRASS_LIGHT); c.px(wx + 3, 48, PAL.INDO_RED);
+      c.px(wx + 6, 48, PAL.GRASS_BASE); c.px(wx + 8, 48, PAL.INDO_YELLOW);
+    }
+
+    // Vibrant Blue Shingled Roof (matching reference left house!)
+    const roof = createShingledRoof(68, 28, '#669ef2', '#356fd4', '#1d4596', '#2452ad');
+    c.blit(roof, 2, 3);
+
+    c.savePNG('sprites/bangunan/rumah_biru.png');
+  }
+
+  // 3J. RUMAH JOGLO JAWA (80x68 logical -> 320x272 px)
+  // Authentic Javanese two-tier Joglo roof + teakwood pendopo veranda!
+  {
+    const c = new PixelCanvas(80, 68);
+
+    // Raised Pendopo Stone Floor + Warm Teakwood Walls
+    c.rectOutline(6, 33, 68, 28, PAL.OUTLINE, PAL.CREAM_BASE);
+    c.rect(7, 34, 66, 3, PAL.CREAM_SHAD);
+    c.rect(7, 55, 66, 5, PAL.STONE_MID);
+    c.rect(7, 58, 66, 2, PAL.STONE_DARK);
+    // 4 Carved Teakwood Joglo Pillars (Soko Guru veranda)
+    for (const px of [8, 25, 52, 69]) {
+      c.rectOutline(px, 32, 4, 29, PAL.OUTLINE, PAL.WOOD_BASE);
+      c.rect(px + 1, 33, 1, 27, PAL.WOOD_HIGH);
+    }
+
+    // Grand Double Carved Javanese Front Door (Gebyok)
+    c.rectOutline(32, 39, 16, 21, PAL.OUTLINE, PAL.WOOD_DEEP);
+    c.rect(34, 41, 5, 18, PAL.WOOD_BASE);
+    c.rect(41, 41, 5, 18, PAL.WOOD_BASE);
+    c.rect(35, 42, 3, 7, PAL.WOOD_HIGH);
+    c.rect(42, 42, 3, 7, PAL.WOOD_HIGH);
+    c.px(38, 50, PAL.INDO_YELLOW);
+    c.px(41, 50, PAL.INDO_YELLOW);
+    // Broad stone entrance steps
+    c.rectOutline(28, 60, 24, 5, PAL.OUTLINE, PAL.STONE_LIGHT);
+    c.rect(29, 62, 22, 1, PAL.STONE_DARK);
+
+    // Traditional Wooden Lattice Windows (Kisi-Kisi)
+    for (const wx of [14, 58]) {
+      c.rectOutline(wx, 40, 9, 11, PAL.OUTLINE, PAL.WOOD_DEEP);
+      c.rect(wx + 1, 41, 7, 9, PAL.INTERIOR_DARK);
+      c.rect(wx + 3, 41, 1, 9, PAL.WOOD_BASE);
+      c.rect(wx + 5, 41, 1, 9, PAL.WOOD_BASE);
+      c.rect(wx + 1, 45, 7, 1, PAL.WOOD_BASE);
+    }
+
+    // Two-Tier Iconic Joglo Roof (Lower Wide Eaves + Steep Upper Crown!)
+    const lowerRoof = createShingledRoof(76, 17, PAL.TERR_HIGH, PAL.TERR_BASE, PAL.TERR_DARK, PAL.TERR_MID);
+    c.blit(lowerRoof, 2, 18);
+    const upperCrown = createShingledRoof(42, 18, PAL.TERR_HIGH, PAL.TERR_BASE, PAL.TERR_DARK, PAL.WOOD_HIGH);
+    c.blit(upperCrown, 19, 2);
+    // Decorative Javanese Roof Finial (Mahkota Genteng)
+    c.rect(38, 0, 4, 3, PAL.OUTLINE);
+    c.rect(39, 1, 2, 2, PAL.BAMBOO_HIGH);
+
+    c.savePNG('sprites/bangunan/rumah_joglo.png');
+  }
+
+  // 3K. RUMAH HIJAU KAMPUNG (72x68 logical -> 288x272 px)
+  // Iconic Indonesian village pastel-green painted wall + slate gray roof!
+  {
+    const c = new PixelCanvas(72, 68);
+
+    // Mint/Sage Green Indonesian Village Plaster Wall + White Trim
+    c.rectOutline(7, 29, 58, 34, PAL.OUTLINE, '#9ad49c');
+    c.rect(8, 30, 56, 3, '#7bb87e');
+    c.rect(8, 56, 56, 6, PAL.WALL_BASE_LIGHT);
+    c.rect(8, 59, 56, 3, PAL.WALL_BASE_DARK);
+    // Crisp white concrete corner pilasters
+    c.rect(8, 30, 3, 27, PAL.WHITE);
+    c.rect(61, 30, 3, 27, PAL.WHITE);
+
+    // Classic Wooden Door on Right with White Frame & Ventilation Louver (Boven)
+    c.rectOutline(44, 37, 14, 25, PAL.OUTLINE, PAL.WHITE);
+    c.rect(46, 39, 10, 2, PAL.INTERIOR_DARK); // ventilasi pintu
+    c.rect(46, 42, 10, 19, PAL.WOOD_BASE);
+    c.rect(47, 43, 8, 8, PAL.WOOD_HIGH);
+    c.rect(47, 52, 8, 8, PAL.WOOD_DARK);
+    c.px(48, 51, PAL.INDO_YELLOW);
+    c.rectOutline(42, 62, 18, 4, PAL.OUTLINE, PAL.STONE_LIGHT);
+
+    // Wide Indonesian Double Window on Left with White Trim
+    c.rectOutline(14, 38, 22, 13, PAL.OUTLINE, PAL.WHITE);
+    c.rect(16, 40, 8, 9, PAL.GLASS_DARK);
+    c.rect(26, 40, 8, 9, PAL.GLASS_DARK);
+    c.rect(17, 41, 6, 3, PAL.GLASS_MID);
+    c.rect(27, 41, 6, 3, PAL.GLASS_MID);
+    c.rect(17, 45, 6, 3, PAL.GLASS_MID);
+    c.rect(27, 45, 6, 3, PAL.GLASS_MID);
+    c.px(17, 41, PAL.GLASS_HIGH); c.px(27, 41, PAL.GLASS_HIGH);
+
+    // Potted Plant on Front Left Porch
+    c.rectOutline(14, 56, 6, 6, PAL.OUTLINE, PAL.TERR_BASE);
+    c.ellipse(17, 54, 4, 3, PAL.GRASS_BASE);
+    c.px(16, 53, PAL.GRASS_HIGH);
+
+    // Slate-Gray Shingled Roof (matching center house of reference image!)
+    const roof = createShingledRoof(68, 28, PAL.SLATE_HIGH, PAL.SLATE_BASE, PAL.SLATE_DARK, PAL.SLATE_HIGH);
+    c.blit(roof, 2, 3);
+
+    c.savePNG('sprites/bangunan/rumah_hijau.png');
+  }
 }
 
 // ============================================================================
@@ -1266,6 +1752,75 @@ function generateProps() {
     c.outline(PAL.OUTLINE);
     c.savePNG('sprites/properti/semak_bunga.png');
   }
+
+  // 4H. Wooden Farm Signpost "LADANG" (sprites/properti/papan_ladang.png) - 28x22 logical -> 112x88 px
+  {
+    const c = new PixelCanvas(28, 22);
+    // Wooden stake
+    c.rectOutline(12, 11, 4, 9, PAL.OUTLINE, PAL.WOOD_DARK);
+    c.rect(13, 12, 1, 7, PAL.WOOD_BASE);
+    // Sign board
+    c.rectOutline(1, 2, 26, 10, PAL.OUTLINE, PAL.WOOD_BASE);
+    c.rect(2, 3, 24, 2, PAL.WOOD_HIGH);
+    c.rect(2, 9, 24, 2, PAL.WOOD_DARK);
+    drawText(c, 'LADANG', 2, 4, PAL.CREAM_HIGH);
+    c.withGroundShadow(14, 19, 6, 2, PAL.SHADOW).savePNG('sprites/properti/papan_ladang.png');
+  }
+}
+
+// ============================================================================
+// 5. PIXEL ART FX SPRITES (sprites/efek/)
+// ============================================================================
+function generateEffects() {
+  // 5A. Pixel Dirt Clod (sprites/efek/gumpalan_tanah.png) - 6x6 logical -> 24x24 px
+  {
+    const c = new PixelCanvas(6, 6);
+    c.rect(1, 1, 4, 4, PAL.SOIL_LIGHT);
+    c.px(2, 1, PAL.SOIL_TOP);
+    c.px(1, 2, PAL.SOIL_TOP);
+    c.px(4, 3, PAL.SOIL_DARK);
+    c.px(3, 4, PAL.SOIL_DARK);
+    c.outline(PAL.OUTLINE);
+    c.savePNG('sprites/efek/gumpalan_tanah.png');
+  }
+
+  // 5B. Dynamic Hoe Swing Arc Trail (sprites/efek/tebasan_cangkul.png) - 20x20 logical -> 80x80 px
+  {
+    const c = new PixelCanvas(20, 20);
+    // Crisp white/cream crescent whoosh arc (top-left sweeping to bottom-right)
+    const pts = [
+      [3, 2, 1], [5, 2, 1], [7, 3, 2], [9, 4, 2], [11, 6, 2],
+      [13, 8, 3], [14, 10, 3], [15, 13, 2], [15, 16, 2], [14, 18, 1],
+    ];
+    for (const [px, py, thick] of pts) {
+      for (let t = 0; t < thick; t++) {
+        c.px(px - t, py, t === 0 ? '#ffffff' : '#fff0b8c8');
+        c.px(px - t, py + 1, t === 0 ? '#fff5cf' : '#ffd87590');
+      }
+    }
+    c.savePNG('sprites/efek/tebasan_cangkul.png');
+  }
+
+  // 5C. Ground Impact Dust Ring (sprites/efek/efek_dampak.png) - 18x10 logical -> 72x40 px
+  {
+    const c = new PixelCanvas(18, 10);
+    // Expanding horizontal oval puff
+    const ring = [
+      [3, 4], [4, 3], [5, 3], [12, 3], [13, 3], [14, 4],
+      [2, 5], [15, 5],
+      [3, 6], [4, 7], [6, 7], [11, 7], [13, 7], [14, 6],
+    ];
+    for (const [rx, ry] of ring) {
+      c.px(rx, ry, '#f5e4c3');
+      c.px(rx, ry + 1, '#c7a478');
+    }
+    // Small inner earth sparks
+    c.px(6, 2, PAL.SOIL_TOP);
+    c.px(11, 2, PAL.SOIL_TOP);
+    c.px(8, 1, '#ffffff');
+    c.px(9, 1, '#ffffff');
+    c.savePNG('sprites/efek/efek_dampak.png');
+  }
 }
 
 console.log('Regenerating refined Kampungku 2D Pixel Art Assets...');
@@ -1273,4 +1828,5 @@ generateGroundTiles();
 generatePetaniSprites();
 generateBuildings();
 generateProps();
+generateEffects();
 console.log('Done! Refined assets saved.');

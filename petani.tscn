@@ -7,28 +7,46 @@
 [ext_resource type="Script" uid="uid://bl038afmna0ug" path="res://ladang.gd" id="5_ladang_script"]
 [ext_resource type="TileSet" uid="uid://b8m3y1e0adg2c" path="res://sprites/ladang_tileset.tres" id="6_ladang_tileset"]
 [ext_resource type="Texture2D" uid="uid://du3i4c0m3ipq7" path="res://sprites/selector.png" id="7_selector_tex"]
-[ext_resource type="Script" uid="uid://dsx3amf0kkoon" path="res://mobile_controls.gd" id="8_mobile_script"]
-[ext_resource type="Texture2D" uid="uid://bkwr28d5cahf" path="res://sprites/btn_cangkul.png" id="9_btn_tex"]
 [ext_resource type="Texture2D" uid="uid://cay2qu4vij6rs" path="res://sprites/cangkul.png" id="10_cangkul_tex"]
-[ext_resource type="Texture2D" path="res://sprites/lingkungan/jalan_batu_h.png" id="11_jalan_h"]
-[ext_resource type="Texture2D" path="res://sprites/lingkungan/jalan_simpang.png" id="12_simpang"]
-[ext_resource type="Texture2D" path="res://sprites/lingkungan/tebing_tanah.png" id="13_tebing"]
-[ext_resource type="Texture2D" path="res://sprites/lingkungan/tangga_batu.png" id="14_tangga"]
-[ext_resource type="Texture2D" path="res://sprites/lingkungan/sawah_air.png" id="15_sawah_air"]
-[ext_resource type="Texture2D" path="res://sprites/lingkungan/padi_tumbuh.png" id="16_padi"]
-[ext_resource type="Texture2D" path="res://sprites/bangunan/indomaret.png" id="17_indomaret"]
-[ext_resource type="Texture2D" path="res://sprites/bangunan/warung.png" id="18_warung"]
-[ext_resource type="Texture2D" path="res://sprites/bangunan/pos_ronda.png" id="19_pos_ronda"]
-[ext_resource type="Texture2D" path="res://sprites/bangunan/saung_sawah.png" id="20_saung"]
-[ext_resource type="Texture2D" path="res://sprites/bangunan/rumah_desa.png" id="21_rumah"]
-[ext_resource type="Texture2D" path="res://sprites/properti/lampu_jalan.png" id="22_lampu"]
-[ext_resource type="Texture2D" path="res://sprites/properti/bangku_kayu.png" id="23_bangku"]
-[ext_resource type="Texture2D" path="res://sprites/properti/pagar_h.png" id="24_pagar_h"]
-[ext_resource type="Texture2D" path="res://sprites/properti/pagar_v.png" id="25_pagar_v"]
-[ext_resource type="Texture2D" path="res://sprites/properti/pohon_rindang.png" id="26_pohon"]
-[ext_resource type="Texture2D" path="res://sprites/properti/pohon_kelapa.png" id="27_kelapa"]
-[ext_resource type="Texture2D" path="res://sprites/properti/gentong_tanah.png" id="28_gentong"]
-[ext_resource type="Texture2D" path="res://sprites/properti/semak_bunga.png" id="29_semak"]
+[ext_resource type="Texture2D" uid="uid://c4wtbfatv1xtn" path="res://sprites/lingkungan/jalan_batu_h.png" id="11_jalan_h"]
+[ext_resource type="Texture2D" uid="uid://bjalb0atb3o5m" path="res://sprites/lingkungan/jalan_simpang.png" id="12_simpang"]
+[ext_resource type="Texture2D" uid="uid://gyfcdvkol01g" path="res://sprites/lingkungan/tebing_tanah.png" id="13_tebing"]
+[ext_resource type="Texture2D" uid="uid://box8r4v5xid3u" path="res://sprites/lingkungan/tangga_batu.png" id="14_tangga"]
+[ext_resource type="Texture2D" uid="uid://cjypedbnrs27l" path="res://sprites/lingkungan/sawah_air.png" id="15_sawah_air"]
+[ext_resource type="Texture2D" uid="uid://xfguto4t3um1" path="res://sprites/lingkungan/padi_tumbuh.png" id="16_padi"]
+[ext_resource type="Texture2D" uid="uid://bs12qfk64lahg" path="res://sprites/bangunan/indomaret.png" id="17_indomaret"]
+[ext_resource type="Texture2D" uid="uid://b6n7m7j3tlxpn" path="res://sprites/bangunan/warung.png" id="18_warung"]
+[ext_resource type="Texture2D" uid="uid://vlwrxdr74ql0" path="res://sprites/bangunan/pos_ronda.png" id="19_pos_ronda"]
+[ext_resource type="Texture2D" uid="uid://bgtsrlq20xmvb" path="res://sprites/bangunan/saung_sawah.png" id="20_saung"]
+[ext_resource type="Texture2D" uid="uid://p3qvkprvie8v" path="res://sprites/bangunan/rumah_desa.png" id="21_rumah"]
+[ext_resource type="Texture2D" uid="uid://drjg8eesddjnu" path="res://sprites/properti/lampu_jalan.png" id="22_lampu"]
+[ext_resource type="Texture2D" uid="uid://bdqbljb1yc6ke" path="res://sprites/properti/bangku_kayu.png" id="23_bangku"]
+[ext_resource type="Texture2D" uid="uid://l4bxey6ebdpu" path="res://sprites/properti/pagar_h.png" id="24_pagar_h"]
+[ext_resource type="Texture2D" uid="uid://cfv60wokgssfn" path="res://sprites/properti/pagar_v.png" id="25_pagar_v"]
+[ext_resource type="Texture2D" uid="uid://cb0ljug6uo10e" path="res://sprites/properti/pohon_rindang.png" id="26_pohon"]
+[ext_resource type="Texture2D" uid="uid://bvnysnlm3vsxq" path="res://sprites/properti/pohon_kelapa.png" id="27_kelapa"]
+[ext_resource type="Texture2D" uid="uid://4ngb64xopue5" path="res://sprites/properti/gentong_tanah.png" id="28_gentong"]
+[ext_resource type="Texture2D" uid="uid://dw3mxcn4g313b" path="res://sprites/properti/semak_bunga.png" id="29_semak"]
+[ext_resource type="Texture2D" uid="uid://d3w4a6xxx81a4" path="res://sprites/lingkungan/area_ladang.png" id="30_area_ladang"]
+[ext_resource type="Texture2D" uid="uid://burpre2ctwgen" path="res://sprites/properti/papan_ladang.png" id="31_papan_ladang"]
+[ext_resource type="Texture2D" uid="uid://lrm7lpijyxq" path="res://sprites/bangunan/alfamart.png" id="32_alfamart"]
+[ext_resource type="Texture2D" uid="uid://b212p5ldnbtvg" path="res://sprites/bangunan/warung_kopi.png" id="33_warkop"]
+[ext_resource type="Texture2D" uid="uid://xvc33ucooa7h" path="res://sprites/bangunan/warung_bakso.png" id="34_bakso"]
+[ext_resource type="Texture2D" uid="uid://xh77yih8o618" path="res://sprites/bangunan/rumah_biru.png" id="35_rumah_biru"]
+[ext_resource type="Texture2D" uid="uid://bwybainrkn85y" path="res://sprites/bangunan/rumah_joglo.png" id="36_rumah_joglo"]
+[ext_resource type="Texture2D" uid="uid://mrhdemh24qla" path="res://sprites/bangunan/rumah_hijau.png" id="37_rumah_hijau"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tebing"]
+size = Vector2(1024, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bakso"]
+size = Vector2(268, 112)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_joglo"]
+size = Vector2(284, 116)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sawah"]
+size = Vector2(212, 148)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_petani"]
 size = Vector2(48, 24)
@@ -48,12 +66,6 @@ size = Vector2(244, 116)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_saung"]
 size = Vector2(184, 88)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_pohon"]
-size = Vector2(48, 28)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_kelapa"]
-size = Vector2(36, 24)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lampu"]
 size = Vector2(28, 20)
 
@@ -66,28 +78,28 @@ size = Vector2(128, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pagar_v"]
 size = Vector2(24, 128)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_tebing"]
-size = Vector2(768, 32)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pohon"]
+size = Vector2(48, 28)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_sawah"]
-size = Vector2(212, 148)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kelapa"]
+size = Vector2(36, 24)
 
-[node name="Kampungku" type="Node2D"]
+[node name="Kampungku" type="Node2D" unique_id=1550733532]
 
-[node name="GroundLayer" type="Node2D" parent="."]
+[node name="GroundLayer" type="Node2D" parent="." unique_id=2048250685]
 z_index = -10
 
-[node name="BackgroundRumput" type="TextureRect" parent="GroundLayer"]
+[node name="BackgroundRumput" type="TextureRect" parent="GroundLayer" unique_id=52033091]
 texture_filter = 1
 texture_repeat = 2
-offset_left = -3000.0
-offset_top = -3000.0
-offset_right = 5000.0
-offset_bottom = 5000.0
+offset_left = -3103.0
+offset_top = -3292.0
+offset_right = 4897.0
+offset_bottom = 4708.0
 texture = ExtResource("3_rumput")
 stretch_mode = 1
 
-[node name="JalanUtamaV" type="TextureRect" parent="GroundLayer"]
+[node name="JalanUtamaV" type="TextureRect" parent="GroundLayer" unique_id=1799953439]
 texture_filter = 1
 texture_repeat = 2
 offset_left = 512.0
@@ -97,17 +109,27 @@ offset_bottom = 1664.0
 texture = ExtResource("4_jalan_v")
 stretch_mode = 1
 
-[node name="JalanUtamaH" type="TextureRect" parent="GroundLayer"]
+[node name="JalanUtamaH" type="TextureRect" parent="GroundLayer" unique_id=859586657]
 texture_filter = 1
 texture_repeat = 2
-offset_left = -384.0
+offset_left = -512.0
 offset_top = 256.0
-offset_right = 1536.0
+offset_right = 1664.0
 offset_bottom = 384.0
 texture = ExtResource("11_jalan_h")
 stretch_mode = 1
 
-[node name="JalanKiriSawah" type="TextureRect" parent="GroundLayer"]
+[node name="JalanUtaraH" type="TextureRect" parent="GroundLayer"]
+texture_filter = 1
+texture_repeat = 2
+offset_left = -512.0
+offset_top = -256.0
+offset_right = 1664.0
+offset_bottom = -128.0
+texture = ExtResource("11_jalan_h")
+stretch_mode = 1
+
+[node name="JalanKiriSawah" type="TextureRect" parent="GroundLayer" unique_id=794918806]
 texture_filter = 1
 texture_repeat = 2
 offset_left = 128.0
@@ -117,7 +139,7 @@ offset_bottom = 1024.0
 texture = ExtResource("11_jalan_h")
 stretch_mode = 1
 
-[node name="JalanSimpangUtama" type="TextureRect" parent="GroundLayer"]
+[node name="JalanSimpangUtama" type="TextureRect" parent="GroundLayer" unique_id=1993865720]
 texture_filter = 1
 offset_left = 512.0
 offset_top = 256.0
@@ -125,7 +147,15 @@ offset_right = 640.0
 offset_bottom = 384.0
 texture = ExtResource("12_simpang")
 
-[node name="JalanSimpangSawah" type="TextureRect" parent="GroundLayer"]
+[node name="JalanSimpangUtara" type="TextureRect" parent="GroundLayer"]
+texture_filter = 1
+offset_left = 512.0
+offset_top = -256.0
+offset_right = 640.0
+offset_bottom = -128.0
+texture = ExtResource("12_simpang")
+
+[node name="JalanSimpangSawah" type="TextureRect" parent="GroundLayer" unique_id=335348639]
 texture_filter = 1
 offset_left = 512.0
 offset_top = 896.0
@@ -133,39 +163,39 @@ offset_right = 640.0
 offset_bottom = 1024.0
 texture = ExtResource("12_simpang")
 
-[node name="TebingKiri" type="StaticBody2D" parent="GroundLayer"]
-position = Vector2(128, 672)
+[node name="TebingKiri" type="StaticBody2D" parent="GroundLayer" unique_id=639692539]
+position = Vector2(0, 672)
 
-[node name="Tex" type="TextureRect" parent="GroundLayer/TebingKiri"]
+[node name="Tex" type="TextureRect" parent="GroundLayer/TebingKiri" unique_id=2145667894]
 texture_filter = 1
 texture_repeat = 2
-offset_left = -384.0
+offset_left = -512.0
 offset_top = -32.0
-offset_right = 384.0
+offset_right = 512.0
 offset_bottom = 32.0
 texture = ExtResource("13_tebing")
 stretch_mode = 1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GroundLayer/TebingKiri"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GroundLayer/TebingKiri" unique_id=386406446]
 shape = SubResource("RectangleShape2D_tebing")
 
-[node name="TebingKanan" type="StaticBody2D" parent="GroundLayer"]
-position = Vector2(1024, 672)
+[node name="TebingKanan" type="StaticBody2D" parent="GroundLayer" unique_id=269739404]
+position = Vector2(1152, 672)
 
-[node name="Tex" type="TextureRect" parent="GroundLayer/TebingKanan"]
+[node name="Tex" type="TextureRect" parent="GroundLayer/TebingKanan" unique_id=1827303539]
 texture_filter = 1
 texture_repeat = 2
-offset_left = -384.0
+offset_left = -512.0
 offset_top = -32.0
-offset_right = 384.0
+offset_right = 512.0
 offset_bottom = 32.0
 texture = ExtResource("13_tebing")
 stretch_mode = 1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GroundLayer/TebingKanan"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GroundLayer/TebingKanan" unique_id=2072420856]
 shape = SubResource("RectangleShape2D_tebing")
 
-[node name="TanggaBatu" type="TextureRect" parent="GroundLayer"]
+[node name="TanggaBatu" type="TextureRect" parent="GroundLayer" unique_id=1009702637]
 texture_filter = 1
 offset_left = 512.0
 offset_top = 640.0
@@ -173,473 +203,603 @@ offset_right = 640.0
 offset_bottom = 704.0
 texture = ExtResource("14_tangga")
 
-[node name="SawahAir1" type="StaticBody2D" parent="GroundLayer"]
+[node name="SawahAir1" type="StaticBody2D" parent="GroundLayer" unique_id=549667174]
 position = Vector2(224, 1152)
 
-[node name="Sprite2D" type="Sprite2D" parent="GroundLayer/SawahAir1"]
+[node name="Sprite2D" type="Sprite2D" parent="GroundLayer/SawahAir1" unique_id=9688997]
 texture_filter = 1
 texture = ExtResource("15_sawah_air")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GroundLayer/SawahAir1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GroundLayer/SawahAir1" unique_id=495018068]
 shape = SubResource("RectangleShape2D_sawah")
 
-[node name="SawahAir2" type="StaticBody2D" parent="GroundLayer"]
+[node name="SawahAir2" type="StaticBody2D" parent="GroundLayer" unique_id=1964192657]
 position = Vector2(224, 1368)
 
-[node name="Sprite2D" type="Sprite2D" parent="GroundLayer/SawahAir2"]
+[node name="Sprite2D" type="Sprite2D" parent="GroundLayer/SawahAir2" unique_id=1059565220]
 texture_filter = 1
 texture = ExtResource("15_sawah_air")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GroundLayer/SawahAir2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GroundLayer/SawahAir2" unique_id=569489375]
 shape = SubResource("RectangleShape2D_sawah")
 
-[node name="SawahAir3" type="StaticBody2D" parent="GroundLayer"]
+[node name="SawahAir3" type="StaticBody2D" parent="GroundLayer" unique_id=570642802]
 position = Vector2(832, 1184)
 
-[node name="Sprite2D" type="Sprite2D" parent="GroundLayer/SawahAir3"]
+[node name="Sprite2D" type="Sprite2D" parent="GroundLayer/SawahAir3" unique_id=663579259]
 texture_filter = 1
 texture = ExtResource("15_sawah_air")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GroundLayer/SawahAir3"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GroundLayer/SawahAir3" unique_id=1028505603]
 shape = SubResource("RectangleShape2D_sawah")
 
-[node name="Ladang" type="TileMapLayer" parent="."]
+[node name="AreaLadang" type="Sprite2D" parent="GroundLayer" unique_id=1950546050]
+texture_filter = 1
+position = Vector2(896, 896)
+texture = ExtResource("30_area_ladang")
+
+[node name="Ladang" type="TileMapLayer" parent="." unique_id=79901079]
 texture_filter = 1
 tile_set = ExtResource("6_ladang_tileset")
 script = ExtResource("5_ladang_script")
 
-[node name="Selector" type="Sprite2D" parent="."]
+[node name="Selector" type="Sprite2D" parent="." unique_id=2068775737]
 texture_filter = 1
 texture = ExtResource("7_selector_tex")
 
-[node name="DuniaKampung" type="Node2D" parent="."]
+[node name="DuniaKampung" type="Node2D" parent="." unique_id=775367710]
 y_sort_enabled = true
 
-[node name="petani" type="CharacterBody2D" parent="DuniaKampung"]
+[node name="petani" type="CharacterBody2D" parent="DuniaKampung" unique_id=1484878117]
 position = Vector2(576, 336)
 script = ExtResource("1_script")
 ladang_node = NodePath("../../Ladang")
 selector_node = NodePath("../../Selector")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="DuniaKampung/petani"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="DuniaKampung/petani" unique_id=1716621881]
 texture_filter = 1
 position = Vector2(0, -64)
 sprite_frames = ExtResource("2_frames")
 animation = &"idle_down"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DuniaKampung/petani"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DuniaKampung/petani" unique_id=1539128362]
 position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_petani")
 
-[node name="Camera2D" type="Camera2D" parent="DuniaKampung/petani"]
+[node name="Camera2D" type="Camera2D" parent="DuniaKampung/petani" unique_id=432523969]
 position = Vector2(0, -48)
 position_smoothing_enabled = true
 
-[node name="HoeTool" type="Sprite2D" parent="DuniaKampung/petani"]
+[node name="HoeTool" type="Sprite2D" parent="DuniaKampung/petani" unique_id=1155054759]
 visible = false
 texture_filter = 1
 position = Vector2(25, -44)
 texture = ExtResource("10_cangkul_tex")
 
-[node name="Indomaret" type="StaticBody2D" parent="DuniaKampung"]
+[node name="Indomaret" type="StaticBody2D" parent="DuniaKampung" unique_id=812050751]
 position = Vector2(256, 232)
 
-[node name="Sprite2D" type="Sprite2D" parent="DuniaKampung/Indomaret"]
+[node name="Sprite2D" type="Sprite2D" parent="DuniaKampung/Indomaret" unique_id=395570714]
 texture_filter = 1
 texture = ExtResource("17_indomaret")
 offset = Vector2(0, -120)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DuniaKampung/Indomaret"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DuniaKampung/Indomaret" unique_id=535052159]
 position = Vector2(0, -56)
 shape = SubResource("RectangleShape2D_indomaret")
 
-[node name="WarungBuSiti" type="StaticBody2D" parent="DuniaKampung"]
+[node name="WarungBuSiti" type="StaticBody2D" parent="DuniaKampung" unique_id=1894627499]
 position = Vector2(896, 232)
 
-[node name="Sprite2D" type="Sprite2D" parent="DuniaKampung/WarungBuSiti"]
+[node name="Sprite2D" type="Sprite2D" parent="DuniaKampung/WarungBuSiti" unique_id=564818821]
 texture_filter = 1
 texture = ExtResource("18_warung")
 offset = Vector2(0, -116)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DuniaKampung/WarungBuSiti"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DuniaKampung/WarungBuSiti" unique_id=1620406656]
 position = Vector2(0, -56)
 shape = SubResource("RectangleShape2D_warung")
 
-[node name="PosRonda" type="StaticBody2D" parent="DuniaKampung"]
+[node name="Alfamart" type="StaticBody2D" parent="DuniaKampung"]
+position = Vector2(1264, 232)
+
+[node name="Sprite2D" type="Sprite2D" parent="DuniaKampung/Alfamart"]
+texture_filter = 1
+texture = ExtResource("32_alfamart")
+offset = Vector2(0, -120)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DuniaKampung/Alfamart"]
+position = Vector2(0, -56)
+shape = SubResource("RectangleShape2D_indomaret")
+
+[node name="Warkop" type="StaticBody2D" parent="DuniaKampung"]
+position = Vector2(-120, 232)
+
+[node name="Sprite2D" type="Sprite2D" parent="DuniaKampung/Warkop"]
+texture_filter = 1
+texture = ExtResource("33_warkop")
+offset = Vector2(0, -116)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DuniaKampung/Warkop"]
+position = Vector2(0, -56)
+shape = SubResource("RectangleShape2D_warung")
+
+[node name="WarungBakso" type="StaticBody2D" parent="DuniaKampung"]
+position = Vector2(-112, 600)
+
+[node name="Sprite2D" type="Sprite2D" parent="DuniaKampung/WarungBakso"]
+texture_filter = 1
+texture = ExtResource("34_bakso")
+offset = Vector2(0, -116)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DuniaKampung/WarungBakso"]
+position = Vector2(0, -56)
+shape = SubResource("RectangleShape2D_bakso")
+
+[node name="PosRonda" type="StaticBody2D" parent="DuniaKampung" unique_id=1440966713]
 position = Vector2(312, 608)
 
-[node name="Sprite2D" type="Sprite2D" parent="DuniaKampung/PosRonda"]
+[node name="Sprite2D" type="Sprite2D" parent="DuniaKampung/PosRonda" unique_id=1639632731]
 texture_filter = 1
 texture = ExtResource("19_pos_ronda")
 offset = Vector2(0, -112)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DuniaKampung/PosRonda"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DuniaKampung/PosRonda" unique_id=283432517]
 position = Vector2(0, -48)
 shape = SubResource("RectangleShape2D_pos_ronda")
 
-[node name="RumahDesa1" type="StaticBody2D" parent="DuniaKampung"]
+[node name="RumahDesa1" type="StaticBody2D" parent="DuniaKampung" unique_id=1306351234]
 position = Vector2(912, 584)
 
-[node name="Sprite2D" type="Sprite2D" parent="DuniaKampung/RumahDesa1"]
+[node name="Sprite2D" type="Sprite2D" parent="DuniaKampung/RumahDesa1" unique_id=325811230]
 texture_filter = 1
 texture = ExtResource("21_rumah")
 offset = Vector2(0, -128)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DuniaKampung/RumahDesa1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DuniaKampung/RumahDesa1" unique_id=2029565759]
 position = Vector2(0, -56)
 shape = SubResource("RectangleShape2D_rumah")
 
-[node name="RumahDesaUtaraKiri" type="StaticBody2D" parent="DuniaKampung"]
-position = Vector2(240, -96)
+[node name="RumahHijauTimur" type="StaticBody2D" parent="DuniaKampung"]
+position = Vector2(1296, 588)
 
-[node name="Sprite2D" type="Sprite2D" parent="DuniaKampung/RumahDesaUtaraKiri"]
+[node name="Sprite2D" type="Sprite2D" parent="DuniaKampung/RumahHijauTimur"]
 texture_filter = 1
-texture = ExtResource("21_rumah")
+texture = ExtResource("37_rumah_hijau")
 offset = Vector2(0, -128)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DuniaKampung/RumahDesaUtaraKiri"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DuniaKampung/RumahHijauTimur"]
 position = Vector2(0, -56)
 shape = SubResource("RectangleShape2D_rumah")
 
-[node name="RumahDesaUtaraKanan" type="StaticBody2D" parent="DuniaKampung"]
-position = Vector2(912, -96)
+[node name="RumahBiruUtaraBarat" type="StaticBody2D" parent="DuniaKampung"]
+position = Vector2(-120, -280)
 
-[node name="Sprite2D" type="Sprite2D" parent="DuniaKampung/RumahDesaUtaraKanan"]
+[node name="Sprite2D" type="Sprite2D" parent="DuniaKampung/RumahBiruUtaraBarat"]
 texture_filter = 1
-texture = ExtResource("21_rumah")
+texture = ExtResource("35_rumah_biru")
 offset = Vector2(0, -128)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DuniaKampung/RumahDesaUtaraKanan"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DuniaKampung/RumahBiruUtaraBarat"]
 position = Vector2(0, -56)
 shape = SubResource("RectangleShape2D_rumah")
 
-[node name="SaungSawah" type="StaticBody2D" parent="DuniaKampung"]
+[node name="RumahJogloUtara" type="StaticBody2D" parent="DuniaKampung"]
+position = Vector2(264, -280)
+
+[node name="Sprite2D" type="Sprite2D" parent="DuniaKampung/RumahJogloUtara"]
+texture_filter = 1
+texture = ExtResource("36_rumah_joglo")
+offset = Vector2(0, -128)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DuniaKampung/RumahJogloUtara"]
+position = Vector2(0, -56)
+shape = SubResource("RectangleShape2D_joglo")
+
+[node name="RumahHijauUtara" type="StaticBody2D" parent="DuniaKampung"]
+position = Vector2(896, -280)
+
+[node name="Sprite2D" type="Sprite2D" parent="DuniaKampung/RumahHijauUtara"]
+texture_filter = 1
+texture = ExtResource("37_rumah_hijau")
+offset = Vector2(0, -128)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DuniaKampung/RumahHijauUtara"]
+position = Vector2(0, -56)
+shape = SubResource("RectangleShape2D_rumah")
+
+[node name="RumahBiruUtaraTimur" type="StaticBody2D" parent="DuniaKampung"]
+position = Vector2(1264, -280)
+
+[node name="Sprite2D" type="Sprite2D" parent="DuniaKampung/RumahBiruUtaraTimur"]
+texture_filter = 1
+texture = ExtResource("35_rumah_biru")
+offset = Vector2(0, -128)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DuniaKampung/RumahBiruUtaraTimur"]
+position = Vector2(0, -56)
+shape = SubResource("RectangleShape2D_rumah")
+
+[node name="SaungSawah" type="StaticBody2D" parent="DuniaKampung" unique_id=427393623]
 position = Vector2(216, 868)
 
-[node name="Sprite2D" type="Sprite2D" parent="DuniaKampung/SaungSawah"]
+[node name="Sprite2D" type="Sprite2D" parent="DuniaKampung/SaungSawah" unique_id=1111673650]
 texture_filter = 1
 texture = ExtResource("20_saung")
 offset = Vector2(0, -104)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DuniaKampung/SaungSawah"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DuniaKampung/SaungSawah" unique_id=1756687253]
 position = Vector2(0, -44)
 shape = SubResource("RectangleShape2D_saung")
 
-[node name="Lampu1" type="StaticBody2D" parent="DuniaKampung"]
+[node name="Lampu1" type="StaticBody2D" parent="DuniaKampung" unique_id=2138516584]
 position = Vector2(452, 236)
 
-[node name="Sprite2D" type="Sprite2D" parent="DuniaKampung/Lampu1"]
+[node name="Sprite2D" type="Sprite2D" parent="DuniaKampung/Lampu1" unique_id=67505944]
 texture_filter = 1
 texture = ExtResource("22_lampu")
 offset = Vector2(0, -78)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DuniaKampung/Lampu1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DuniaKampung/Lampu1" unique_id=1461321948]
 position = Vector2(0, -6)
 shape = SubResource("RectangleShape2D_lampu")
 
-[node name="Lampu2" type="StaticBody2D" parent="DuniaKampung"]
+[node name="Lampu2" type="StaticBody2D" parent="DuniaKampung" unique_id=188953630]
 position = Vector2(692, 236)
 
-[node name="Sprite2D" type="Sprite2D" parent="DuniaKampung/Lampu2"]
+[node name="Sprite2D" type="Sprite2D" parent="DuniaKampung/Lampu2" unique_id=2108833742]
 texture_filter = 1
 texture = ExtResource("22_lampu")
 offset = Vector2(0, -78)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DuniaKampung/Lampu2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DuniaKampung/Lampu2" unique_id=479126714]
 position = Vector2(0, -6)
 shape = SubResource("RectangleShape2D_lampu")
 
-[node name="Lampu3" type="StaticBody2D" parent="DuniaKampung"]
+[node name="Lampu3" type="StaticBody2D" parent="DuniaKampung" unique_id=82737511]
 position = Vector2(452, 464)
 
-[node name="Sprite2D" type="Sprite2D" parent="DuniaKampung/Lampu3"]
+[node name="Sprite2D" type="Sprite2D" parent="DuniaKampung/Lampu3" unique_id=841665713]
 texture_filter = 1
 texture = ExtResource("22_lampu")
 offset = Vector2(0, -78)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DuniaKampung/Lampu3"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DuniaKampung/Lampu3" unique_id=459304053]
 position = Vector2(0, -6)
 shape = SubResource("RectangleShape2D_lampu")
 
-[node name="Lampu4" type="StaticBody2D" parent="DuniaKampung"]
+[node name="Lampu4" type="StaticBody2D" parent="DuniaKampung" unique_id=159436807]
 position = Vector2(692, 464)
 
-[node name="Sprite2D" type="Sprite2D" parent="DuniaKampung/Lampu4"]
+[node name="Sprite2D" type="Sprite2D" parent="DuniaKampung/Lampu4" unique_id=247727668]
 texture_filter = 1
 texture = ExtResource("22_lampu")
 offset = Vector2(0, -78)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DuniaKampung/Lampu4"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DuniaKampung/Lampu4" unique_id=533680768]
 position = Vector2(0, -6)
 shape = SubResource("RectangleShape2D_lampu")
 
-[node name="Lampu5" type="StaticBody2D" parent="DuniaKampung"]
+[node name="Lampu5" type="StaticBody2D" parent="DuniaKampung" unique_id=729847152]
 position = Vector2(452, 864)
 
-[node name="Sprite2D" type="Sprite2D" parent="DuniaKampung/Lampu5"]
+[node name="Sprite2D" type="Sprite2D" parent="DuniaKampung/Lampu5" unique_id=1264044826]
 texture_filter = 1
 texture = ExtResource("22_lampu")
 offset = Vector2(0, -78)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DuniaKampung/Lampu5"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DuniaKampung/Lampu5" unique_id=703750787]
 position = Vector2(0, -6)
 shape = SubResource("RectangleShape2D_lampu")
 
-[node name="Lampu6" type="StaticBody2D" parent="DuniaKampung"]
-position = Vector2(692, 748)
+[node name="Lampu6" type="StaticBody2D" parent="DuniaKampung" unique_id=1751759905]
+position = Vector2(660, 742)
 
-[node name="Sprite2D" type="Sprite2D" parent="DuniaKampung/Lampu6"]
+[node name="Sprite2D" type="Sprite2D" parent="DuniaKampung/Lampu6" unique_id=1586195093]
 texture_filter = 1
 texture = ExtResource("22_lampu")
 offset = Vector2(0, -78)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DuniaKampung/Lampu6"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DuniaKampung/Lampu6" unique_id=56932084]
 position = Vector2(0, -6)
 shape = SubResource("RectangleShape2D_lampu")
 
-[node name="BangkuPosRonda" type="StaticBody2D" parent="DuniaKampung"]
+[node name="PapanLadang" type="StaticBody2D" parent="DuniaKampung" unique_id=1931666640]
+position = Vector2(744, 744)
+
+[node name="Sprite2D" type="Sprite2D" parent="DuniaKampung/PapanLadang" unique_id=556334199]
+texture_filter = 1
+texture = ExtResource("31_papan_ladang")
+offset = Vector2(0, -34)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DuniaKampung/PapanLadang" unique_id=1130692244]
+position = Vector2(0, -6)
+shape = SubResource("RectangleShape2D_lampu")
+
+[node name="BangkuPosRonda" type="StaticBody2D" parent="DuniaKampung" unique_id=719741155]
 position = Vector2(124, 588)
 
-[node name="Sprite2D" type="Sprite2D" parent="DuniaKampung/BangkuPosRonda"]
+[node name="Sprite2D" type="Sprite2D" parent="DuniaKampung/BangkuPosRonda" unique_id=468327086]
 texture_filter = 1
 texture = ExtResource("23_bangku")
 offset = Vector2(0, -38)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DuniaKampung/BangkuPosRonda"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DuniaKampung/BangkuPosRonda" unique_id=1686721712]
 position = Vector2(0, -10)
 shape = SubResource("RectangleShape2D_bangku")
 
-[node name="BangkuSawah" type="StaticBody2D" parent="DuniaKampung"]
+[node name="BangkuSawah" type="StaticBody2D" parent="DuniaKampung" unique_id=1562097290]
 position = Vector2(396, 868)
 
-[node name="Sprite2D" type="Sprite2D" parent="DuniaKampung/BangkuSawah"]
+[node name="Sprite2D" type="Sprite2D" parent="DuniaKampung/BangkuSawah" unique_id=1608407792]
 texture_filter = 1
 texture = ExtResource("23_bangku")
 offset = Vector2(0, -38)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DuniaKampung/BangkuSawah"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DuniaKampung/BangkuSawah" unique_id=1972033202]
 position = Vector2(0, -10)
 shape = SubResource("RectangleShape2D_bangku")
 
-[node name="PagarRumahKiri" type="StaticBody2D" parent="DuniaKampung"]
+[node name="PagarRumahKiri" type="StaticBody2D" parent="DuniaKampung" unique_id=1477227125]
 position = Vector2(768, 616)
 
-[node name="Sprite2D" type="Sprite2D" parent="DuniaKampung/PagarRumahKiri"]
+[node name="Sprite2D" type="Sprite2D" parent="DuniaKampung/PagarRumahKiri" unique_id=889289665]
 texture_filter = 1
 texture = ExtResource("24_pagar_h")
 offset = Vector2(0, -32)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DuniaKampung/PagarRumahKiri"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DuniaKampung/PagarRumahKiri" unique_id=452262234]
 position = Vector2(0, -10)
 shape = SubResource("RectangleShape2D_pagar_h")
 
-[node name="PagarRumahKanan" type="StaticBody2D" parent="DuniaKampung"]
+[node name="PagarRumahKanan" type="StaticBody2D" parent="DuniaKampung" unique_id=899890707]
 position = Vector2(1024, 616)
 
-[node name="Sprite2D" type="Sprite2D" parent="DuniaKampung/PagarRumahKanan"]
+[node name="Sprite2D" type="Sprite2D" parent="DuniaKampung/PagarRumahKanan" unique_id=348128849]
 texture_filter = 1
 texture = ExtResource("24_pagar_h")
 offset = Vector2(0, -32)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DuniaKampung/PagarRumahKanan"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DuniaKampung/PagarRumahKanan" unique_id=154643498]
 position = Vector2(0, -10)
 shape = SubResource("RectangleShape2D_pagar_h")
 
-[node name="PagarRumahSampingKiri" type="StaticBody2D" parent="DuniaKampung"]
+[node name="PagarRumahSampingKiri" type="StaticBody2D" parent="DuniaKampung" unique_id=1107485802]
 position = Vector2(716, 520)
 
-[node name="Sprite2D" type="Sprite2D" parent="DuniaKampung/PagarRumahSampingKiri"]
+[node name="Sprite2D" type="Sprite2D" parent="DuniaKampung/PagarRumahSampingKiri" unique_id=66096283]
 texture_filter = 1
 texture = ExtResource("25_pagar_v")
 offset = Vector2(0, -56)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DuniaKampung/PagarRumahSampingKiri"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DuniaKampung/PagarRumahSampingKiri" unique_id=2063167136]
 position = Vector2(0, -48)
 shape = SubResource("RectangleShape2D_pagar_v")
 
-[node name="PagarRumahSampingKanan" type="StaticBody2D" parent="DuniaKampung"]
+[node name="PagarRumahSampingKanan" type="StaticBody2D" parent="DuniaKampung" unique_id=316813051]
 position = Vector2(1076, 520)
 
-[node name="Sprite2D" type="Sprite2D" parent="DuniaKampung/PagarRumahSampingKanan"]
+[node name="Sprite2D" type="Sprite2D" parent="DuniaKampung/PagarRumahSampingKanan" unique_id=1458899255]
 texture_filter = 1
 texture = ExtResource("25_pagar_v")
 offset = Vector2(0, -56)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DuniaKampung/PagarRumahSampingKanan"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DuniaKampung/PagarRumahSampingKanan" unique_id=1955426451]
 position = Vector2(0, -48)
 shape = SubResource("RectangleShape2D_pagar_v")
 
-[node name="PohonRindang1" type="StaticBody2D" parent="DuniaKampung"]
-position = Vector2(28, 224)
+[node name="PohonRindang1" type="StaticBody2D" parent="DuniaKampung" unique_id=1657910971]
+position = Vector2(-336, 224)
 
-[node name="Sprite2D" type="Sprite2D" parent="DuniaKampung/PohonRindang1"]
+[node name="Sprite2D" type="Sprite2D" parent="DuniaKampung/PohonRindang1" unique_id=359458655]
 texture_filter = 1
 texture = ExtResource("26_pohon")
 offset = Vector2(0, -96)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DuniaKampung/PohonRindang1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DuniaKampung/PohonRindang1" unique_id=2117789942]
 position = Vector2(0, -10)
 shape = SubResource("RectangleShape2D_pohon")
 
-[node name="PohonRindang2" type="StaticBody2D" parent="DuniaKampung"]
-position = Vector2(1148, 224)
+[node name="PohonRindang2" type="StaticBody2D" parent="DuniaKampung" unique_id=554244347]
+position = Vector2(1504, 224)
 
-[node name="Sprite2D" type="Sprite2D" parent="DuniaKampung/PohonRindang2"]
+[node name="Sprite2D" type="Sprite2D" parent="DuniaKampung/PohonRindang2" unique_id=1335660673]
 texture_filter = 1
 texture = ExtResource("26_pohon")
 offset = Vector2(0, -96)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DuniaKampung/PohonRindang2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DuniaKampung/PohonRindang2" unique_id=841772790]
 position = Vector2(0, -10)
 shape = SubResource("RectangleShape2D_pohon")
 
-[node name="PohonRindang3" type="StaticBody2D" parent="DuniaKampung"]
-position = Vector2(1168, 560)
+[node name="PohonRindang3" type="StaticBody2D" parent="DuniaKampung" unique_id=1106152171]
+position = Vector2(1504, 576)
 
-[node name="Sprite2D" type="Sprite2D" parent="DuniaKampung/PohonRindang3"]
+[node name="Sprite2D" type="Sprite2D" parent="DuniaKampung/PohonRindang3" unique_id=1348206968]
 texture_filter = 1
 texture = ExtResource("26_pohon")
 offset = Vector2(0, -96)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DuniaKampung/PohonRindang3"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DuniaKampung/PohonRindang3" unique_id=402053546]
 position = Vector2(0, -10)
 shape = SubResource("RectangleShape2D_pohon")
 
-[node name="PohonRindang4" type="StaticBody2D" parent="DuniaKampung"]
-position = Vector2(1260, 444)
+[node name="PohonRindang4" type="StaticBody2D" parent="DuniaKampung" unique_id=346209983]
+position = Vector2(1560, 444)
 
-[node name="Sprite2D" type="Sprite2D" parent="DuniaKampung/PohonRindang4"]
+[node name="Sprite2D" type="Sprite2D" parent="DuniaKampung/PohonRindang4" unique_id=1284855321]
 texture_filter = 1
 texture = ExtResource("26_pohon")
 offset = Vector2(0, -96)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DuniaKampung/PohonRindang4"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DuniaKampung/PohonRindang4" unique_id=1627243492]
 position = Vector2(0, -10)
 shape = SubResource("RectangleShape2D_pohon")
 
-[node name="PohonRindang5" type="StaticBody2D" parent="DuniaKampung"]
-position = Vector2(-52, 520)
+[node name="PohonRindang5" type="StaticBody2D" parent="DuniaKampung" unique_id=1998103029]
+position = Vector2(-344, 560)
 
-[node name="Sprite2D" type="Sprite2D" parent="DuniaKampung/PohonRindang5"]
+[node name="Sprite2D" type="Sprite2D" parent="DuniaKampung/PohonRindang5" unique_id=1924017351]
 texture_filter = 1
 texture = ExtResource("26_pohon")
 offset = Vector2(0, -96)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DuniaKampung/PohonRindang5"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DuniaKampung/PohonRindang5" unique_id=1022662299]
 position = Vector2(0, -10)
 shape = SubResource("RectangleShape2D_pohon")
 
-[node name="PohonKelapa1" type="StaticBody2D" parent="DuniaKampung"]
+[node name="PohonRindangUtara1" type="StaticBody2D" parent="DuniaKampung"]
+position = Vector2(-336, -280)
+
+[node name="Sprite2D" type="Sprite2D" parent="DuniaKampung/PohonRindangUtara1"]
+texture_filter = 1
+texture = ExtResource("26_pohon")
+offset = Vector2(0, -96)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DuniaKampung/PohonRindangUtara1"]
+position = Vector2(0, -10)
+shape = SubResource("RectangleShape2D_pohon")
+
+[node name="PohonRindangUtara2" type="StaticBody2D" parent="DuniaKampung"]
+position = Vector2(1488, -280)
+
+[node name="Sprite2D" type="Sprite2D" parent="DuniaKampung/PohonRindangUtara2"]
+texture_filter = 1
+texture = ExtResource("26_pohon")
+offset = Vector2(0, -96)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DuniaKampung/PohonRindangUtara2"]
+position = Vector2(0, -10)
+shape = SubResource("RectangleShape2D_pohon")
+
+[node name="LampuUtara1" type="StaticBody2D" parent="DuniaKampung"]
+position = Vector2(452, -276)
+
+[node name="Sprite2D" type="Sprite2D" parent="DuniaKampung/LampuUtara1"]
+texture_filter = 1
+texture = ExtResource("22_lampu")
+offset = Vector2(0, -78)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DuniaKampung/LampuUtara1"]
+position = Vector2(0, -6)
+shape = SubResource("RectangleShape2D_lampu")
+
+[node name="LampuUtara2" type="StaticBody2D" parent="DuniaKampung"]
+position = Vector2(692, -276)
+
+[node name="Sprite2D" type="Sprite2D" parent="DuniaKampung/LampuUtara2"]
+texture_filter = 1
+texture = ExtResource("22_lampu")
+offset = Vector2(0, -78)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DuniaKampung/LampuUtara2"]
+position = Vector2(0, -6)
+shape = SubResource("RectangleShape2D_lampu")
+
+[node name="LampuBarat" type="StaticBody2D" parent="DuniaKampung"]
+position = Vector2(56, 232)
+
+[node name="Sprite2D" type="Sprite2D" parent="DuniaKampung/LampuBarat"]
+texture_filter = 1
+texture = ExtResource("22_lampu")
+offset = Vector2(0, -78)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DuniaKampung/LampuBarat"]
+position = Vector2(0, -6)
+shape = SubResource("RectangleShape2D_lampu")
+
+[node name="GentongJoglo" type="Sprite2D" parent="DuniaKampung"]
+texture_filter = 1
+position = Vector2(88, -284)
+texture = ExtResource("28_gentong")
+offset = Vector2(0, -32)
+
+[node name="SemakUtara" type="Sprite2D" parent="DuniaKampung"]
+texture_filter = 1
+position = Vector2(728, -284)
+texture = ExtResource("29_semak")
+offset = Vector2(0, -30)
+
+[node name="PohonKelapa1" type="StaticBody2D" parent="DuniaKampung" unique_id=464412921]
 position = Vector2(64, 868)
 
-[node name="Sprite2D" type="Sprite2D" parent="DuniaKampung/PohonKelapa1"]
+[node name="Sprite2D" type="Sprite2D" parent="DuniaKampung/PohonKelapa1" unique_id=2138865559]
 texture_filter = 1
 texture = ExtResource("27_kelapa")
 offset = Vector2(0, -104)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DuniaKampung/PohonKelapa1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DuniaKampung/PohonKelapa1" unique_id=1408541569]
 position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_kelapa")
 
-[node name="PohonKelapa2" type="StaticBody2D" parent="DuniaKampung"]
+[node name="PohonKelapa2" type="StaticBody2D" parent="DuniaKampung" unique_id=1028689067]
 position = Vector2(1132, 920)
 
-[node name="Sprite2D" type="Sprite2D" parent="DuniaKampung/PohonKelapa2"]
+[node name="Sprite2D" type="Sprite2D" parent="DuniaKampung/PohonKelapa2" unique_id=1362729008]
 texture_filter = 1
 texture = ExtResource("27_kelapa")
 offset = Vector2(0, -104)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DuniaKampung/PohonKelapa2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DuniaKampung/PohonKelapa2" unique_id=1951316754]
 position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_kelapa")
 
-[node name="PohonKelapa3" type="StaticBody2D" parent="DuniaKampung"]
+[node name="PohonKelapa3" type="StaticBody2D" parent="DuniaKampung" unique_id=1699180739]
 position = Vector2(400, 1280)
 
-[node name="Sprite2D" type="Sprite2D" parent="DuniaKampung/PohonKelapa3"]
+[node name="Sprite2D" type="Sprite2D" parent="DuniaKampung/PohonKelapa3" unique_id=1753939750]
 texture_filter = 1
 texture = ExtResource("27_kelapa")
 offset = Vector2(0, -104)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DuniaKampung/PohonKelapa3"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DuniaKampung/PohonKelapa3" unique_id=1381448626]
 position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_kelapa")
 
-[node name="GentongWarung" type="Sprite2D" parent="DuniaKampung"]
+[node name="GentongWarung" type="Sprite2D" parent="DuniaKampung" unique_id=32404266]
 texture_filter = 1
 position = Vector2(1070, 224)
 texture = ExtResource("28_gentong")
 offset = Vector2(0, -32)
 
-[node name="GentongRumah" type="Sprite2D" parent="DuniaKampung"]
+[node name="GentongRumah" type="Sprite2D" parent="DuniaKampung" unique_id=838641623]
 texture_filter = 1
 position = Vector2(1032, 572)
 texture = ExtResource("28_gentong")
 offset = Vector2(0, -32)
 
-[node name="GentongPosRonda" type="Sprite2D" parent="DuniaKampung"]
+[node name="GentongPosRonda" type="Sprite2D" parent="DuniaKampung" unique_id=679631855]
 texture_filter = 1
 position = Vector2(444, 592)
 texture = ExtResource("28_gentong")
 offset = Vector2(0, -32)
 
-[node name="Semak1" type="Sprite2D" parent="DuniaKampung"]
+[node name="Semak1" type="Sprite2D" parent="DuniaKampung" unique_id=591782424]
 texture_filter = 1
 position = Vector2(108, 456)
 texture = ExtResource("29_semak")
 offset = Vector2(0, -30)
 
-[node name="Semak2" type="Sprite2D" parent="DuniaKampung"]
+[node name="Semak2" type="Sprite2D" parent="DuniaKampung" unique_id=563074752]
 texture_filter = 1
 position = Vector2(748, 444)
 texture = ExtResource("29_semak")
 offset = Vector2(0, -30)
 
-[node name="Semak3" type="Sprite2D" parent="DuniaKampung"]
+[node name="Semak3" type="Sprite2D" parent="DuniaKampung" unique_id=508838121]
 texture_filter = 1
 position = Vector2(1108, 1280)
 texture = ExtResource("29_semak")
 offset = Vector2(0, -30)
 
-[node name="PadiDekor1" type="Sprite2D" parent="DuniaKampung"]
+[node name="PadiDekor1" type="Sprite2D" parent="DuniaKampung" unique_id=888960587]
 texture_filter = 1
 position = Vector2(748, 1344)
 texture = ExtResource("16_padi")
 offset = Vector2(0, -40)
 
-[node name="PadiDekor2" type="Sprite2D" parent="DuniaKampung"]
+[node name="PadiDekor2" type="Sprite2D" parent="DuniaKampung" unique_id=694439932]
 texture_filter = 1
 position = Vector2(920, 1344)
 texture = ExtResource("16_padi")
 offset = Vector2(0, -40)
-
-[node name="MobileControls" type="CanvasLayer" parent="."]
-script = ExtResource("8_mobile_script")
-petani = NodePath("../DuniaKampung/petani")
-
-[node name="Control" type="Control" parent="MobileControls"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="BtnCangkul" type="TextureButton" parent="MobileControls/Control"]
-texture_filter = 1
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -110.0
-offset_top = -110.0
-offset_right = -20.0
-offset_bottom = -20.0
-grow_horizontal = 0
-grow_vertical = 0
-texture_normal = ExtResource("9_btn_tex")
-ignore_texture_size = true
-stretch_mode = 5

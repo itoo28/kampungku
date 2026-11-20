@@ -8,8 +8,8 @@
 
 - **Pergerakan 8 Arah Responsif**: Karakter dapat bergerak ke 8 arah mata angin dengan kecepatan jalan yang seimbang (vektor diagonal dinormalisasi sehingga tidak lebih cepat saat bergerak serong).
 - **Dukungan Multi-Input**:
-  - **Desktop (PC/Laptop)**: Kontrol menggunakan keyboard tombol **WASD** atau **Panah (Arrow Keys)**.
-  - **Mobile (Android)**: Kontrol layar sentuh dan drag (*touch/drag control*) responsif dengan *deadzone* anti-jitter dan radius seret dinamis.
+  - **Desktop (PC/Laptop)**: Kontrol menggunakan keyboard tombol **WASD / Panah** untuk berjalan, **Spasi / J** atau **klik langsung pada selektor / petak sekitar petani** untuk mencangkul.
+  - **Mobile (Android)**: **Drag** layar untuk berjalan ke segala arah, dan cukup **Tap** langsung pada selektor atau petak di sekitar petani di Area Ladang untuk mencangkul (tanpa tombol aksi mengambang).
 - **Animasi Karakter 4 Arah**:
   - Berjalan: `walk_down` (depan), `walk_up` (belakang), `walk_left` (kiri), dan `walk_right` (kanan).
   - Diam (*Idle*): Karakter tetap menghadap ke arah terakhir saat input berhenti (`idle_down`, `idle_up`, dll.).
